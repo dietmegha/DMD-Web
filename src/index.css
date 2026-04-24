@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2f5233;
+  --color-primary-dark: #1f3722;
+  --color-primary-muted: #e8efe9;
+  --color-surface: #fafbfa;
+  --color-ink: #1a241c;
+  --color-ink-muted: #4a5c4e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-ink antialiased;
+    font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  }
+}
