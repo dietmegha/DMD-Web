@@ -1,12 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #2f5233;
-  --color-primary-dark: #1f3722;
-  --color-primary-muted: #e8efe9;
-  --color-surface: #fafbfa;
-  --color-ink: #1a241c;
-  --color-ink-muted: #4a5c4e;
+  --color-primary: #2d6a3a;
+  --color-primary-dark: #1e4626;
+  --color-primary-light: #3d8a4a;
+  --color-primary-muted: #e6f0e8;
+  --color-accent: #b8956b;
+  --color-accent-muted: #f3ebe0;
+  --color-surface: #f4f7f4;
+  --color-surface-warm: #faf7f2;
+  --color-ink: #142018;
+  --color-ink-muted: #4d5f52;
+  --shadow-card: 0 4px 6px -1px rgb(20 32 24 / 0.06), 0 10px 24px -8px rgb(20 32 24 / 0.12);
+  --shadow-card-hover: 0 12px 32px -12px rgb(45 106 58 / 0.25);
+  --shadow-glow: 0 0 0 1px rgb(45 106 58 / 0.08), 0 24px 48px -20px rgb(45 106 58 / 0.35);
 }
 
 @layer base {
@@ -15,7 +22,7 @@
   }
 
   body {
-    @apply bg-white text-ink antialiased;
+    @apply bg-surface-warm text-ink antialiased;
     font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
   }
 
@@ -24,11 +31,79 @@
   h3,
   h4 {
     font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-primary-muted) 85%, var(--color-primary));
+    color: var(--color-ink);
   }
 }
 
 @layer utilities {
   .font-heading {
     font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary shadow-sm backdrop-blur-sm;
+  }
+
+  .mesh-hero {
+    background-color: var(--color-surface-warm);
+    background-image:
+      radial-gradient(ellipse 90% 60% at 10% -10%, rgb(45 106 58 / 0.14), transparent 50%),
+      radial-gradient(ellipse 70% 50% at 95% 15%, rgb(184 149 107 / 0.12), transparent 45%),
+      radial-gradient(ellipse 50% 40% at 50% 100%, rgb(230 240 232 / 0.9), transparent 55%);
+  }
+
+  .mesh-section {
+    background-image: radial-gradient(ellipse 80% 50% at 100% 0%, rgb(45 106 58 / 0.06), transparent),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgb(184 149 107 / 0.05), transparent);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition duration-200;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-primary:hover {
+    @apply bg-primary-dark brightness-[1.02];
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 1px rgb(45 106 58 / 0.12), 0 28px 56px -24px rgb(45 106 58 / 0.45);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-primary:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-surface-warm;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-primary/25 bg-white/90 px-6 py-3 text-sm font-semibold text-primary backdrop-blur-sm transition duration-200;
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-secondary:hover {
+    @apply border-primary/45 bg-white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .btn-secondary:focus-visible {
+    @apply outline-none ring-2 ring-primary/40 ring-offset-2 ring-offset-surface-warm;
+  }
+
+  .card-interactive {
+    @apply rounded-3xl border border-primary/8 bg-white/95 backdrop-blur-sm transition duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-interactive:hover {
+    @apply border-primary/20;
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
   }
 }

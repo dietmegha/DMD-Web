@@ -1,45 +1,70 @@
 const quotes = [
   {
-    quote:
-      "I finally understand how to eat for my blood sugar without feeling like I am on a restrictive diet. The check-ins kept me accountable in a kind way.",
-    name: "Priya M.",
-    detail: "Type 2 diabetes support",
+    quote: "I lost 6 kg in two months without starving — I would absolutely recommend her.",
+    name: "Client",
+    detail: "Weight loss",
   },
   {
-    quote:
-      "Clear handouts, specific grocery lists, and recipes my kids will eat. That combination was missing from past programs I tried.",
-    name: "Jordan L.",
-    detail: "Family nutrition",
+    quote: "My PCOS felt more manageable and the weight finally started moving in the right direction.",
+    name: "Client",
+    detail: "PCOS care",
   },
   {
-    quote:
-      "My GI symptoms improved within weeks. I appreciated the stepwise approach instead of cutting out half the food groups at once.",
-    name: "Alex R.",
-    detail: "Digestive health",
+    quote: "The plans were simple enough to follow every day — they actually matched real life.",
+    name: "Client",
+    detail: "Lifestyle",
   },
 ] as const;
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="scroll-mt-20 border-t border-primary-muted bg-white py-20 sm:py-24">
+    <section
+      id="testimonials"
+      className="relative scroll-mt-20 border-t border-primary/10 bg-surface mesh-section py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">What clients say</h2>
-        <p className="mt-4 max-w-2xl text-lg text-ink-muted">
-          Outcomes vary by individual; these reflections describe common themes we hear in practice.
+        <p className="section-eyebrow">Stories from clients</p>
+        <h2 className="mt-5 text-3xl font-semibold tracking-tight text-ink sm:text-4xl lg:text-[2.5rem]">
+          Real Client Transformations
+        </h2>
+        <p className="mt-4 max-w-2xl text-lg text-ink-muted sm:text-xl">
+          Every body is different; these are the kinds of outcomes people describe after sticking with a plan made for
+          them.
         </p>
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {quotes.map((t) => (
+        <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:gap-8">
+          {quotes.map((t, i) => (
             <figure
-              key={t.name}
-              className="flex h-full flex-col rounded-2xl border border-primary-muted bg-surface p-6"
+              key={i}
+              className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-primary/10 bg-white p-7 shadow-[var(--shadow-card)] transition hover:shadow-[var(--shadow-card-hover)] sm:p-8"
             >
-              <blockquote className="flex-1 text-sm leading-relaxed text-ink">&ldquo;{t.quote}&rdquo;</blockquote>
-              <figcaption className="mt-6 border-t border-primary-muted pt-4">
-                <p className="font-semibold text-ink">{t.name}</p>
-                <p className="mt-1 text-xs text-ink-muted">{t.detail}</p>
+              <span
+                className="font-heading text-5xl font-semibold leading-none text-primary/20"
+                aria-hidden
+              >
+                “
+              </span>
+              <blockquote className="-mt-2 flex-1 text-base leading-relaxed text-ink">
+                {t.quote}
+              </blockquote>
+              <figcaption className="mt-8 flex items-center gap-3 border-t border-primary/10 pt-6">
+                <span
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-accent/30 text-sm font-semibold text-primary"
+                  aria-hidden
+                >
+                  {t.detail.charAt(0)}
+                </span>
+                <div>
+                  <p className="font-semibold text-ink">{t.name}</p>
+                  <p className="mt-0.5 text-xs font-medium uppercase tracking-wider text-ink-muted">{t.detail}</p>
+                </div>
               </figcaption>
             </figure>
           ))}
+        </div>
+        <div className="mt-12 rounded-3xl border border-dashed border-primary/25 bg-white/70 p-8 text-center shadow-inner backdrop-blur-sm sm:p-10">
+          <p className="text-sm font-medium leading-relaxed text-ink-muted">
+            Space for before-and-after photos when clients are happy to share — always with their permission.
+          </p>
         </div>
       </div>
     </section>

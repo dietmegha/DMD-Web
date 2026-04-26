@@ -1,12 +1,14 @@
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
-import { Faq } from "./components/Faq";
+import { CtaBanner } from "./components/CtaBanner";
+import { DietPrograms } from "./components/DietPrograms";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
-import { Pricing } from "./components/Pricing";
 import { Services } from "./components/Services";
 import { SiteHeader } from "./components/SiteHeader";
+import { StickyWhatsApp } from "./components/StickyWhatsApp";
 import { Testimonials } from "./components/Testimonials";
+import { WhyChoose } from "./components/WhyChoose";
 
 export default function App() {
   return (
@@ -20,14 +22,16 @@ export default function App() {
       <SiteHeader />
       <main id="main">
         <Hero />
-        <About />
         <Services />
+        <WhyChoose />
         <Testimonials />
-        <Pricing />
-        <Faq />
+        <CtaBanner />
+        <About />
+        <DietPrograms />
         <Contact />
       </main>
       <Footer />
+      <StickyWhatsApp />
     </>
   );
 }
